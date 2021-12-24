@@ -42,9 +42,16 @@ include "database.php";
     <section id="scp">
         <div class="container">
             <h3>Prikazi sve solarne sisteme</h3>
-            <button id="scpb">Prikazi</button>
-            <div class="scp" id="tabela_sistemi"></div>
+            <button id="ss_prikaz">Prikazi</button>
+            <div class="ss_tabela" id="tabela_sistemi"></div>
 
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#ss_prikaz").click(function() {
+                        $(".ss_tabela").load("getsolar.php");
+                    })
+                });
+            </script>
 
         </div>
     </section>
@@ -152,7 +159,7 @@ include "database.php";
                     <li class="form-row">
                         <label>ID solarnog sistema:</label></br>
                         <select name="id4" required>
-                            
+
 
                         </select>
                     </li>
@@ -167,8 +174,8 @@ include "database.php";
                 </ul>
             </form>
         </div>
-       
-        
+
+
     </section>
     <section id="sao">
         <div class="container">
@@ -185,8 +192,8 @@ include "database.php";
                     </li>
                 </ul>
             </form>
-            
-            
+
+
         </div>
     </section>
     <footer>
