@@ -101,6 +101,25 @@ include "database.php";
                 </ul>
             </form>
         </div>
+
+        <?php
+        if (isset($_POST["unesi"])) {
+            if (isset($_POST['naziv']) && isset($_POST['zvezda']) && isset($_POST['otkriven'])) {
+                $naziv = $_POST['naziv'];
+                $zvezda = $_POST['zvezda'];
+                $otkriven = $_POST['otkriven'];
+                $sql = "INSERT INTO solarni_sistem(naziv, zvezda, otkriven) VALUES ('$naziv', '$zvezda', '$otkriven')";
+                if ($mysqli->query($sql)) {
+                    echo '<p class="success">Solarni sistem je sacuvan!</p>';
+                } else {
+                    echo '<p class="success">Solarni sistem NIJE sacuvan!</p>';
+                }
+            } else {
+                echo '<p class="fail">Nisu prosleđeni parametri!</p>';
+            }
+        }
+        ?>
+
     </section>
     <section id="sci">
         <div class="container">
