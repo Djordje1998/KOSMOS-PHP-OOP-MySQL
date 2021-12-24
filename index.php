@@ -112,7 +112,7 @@ include "database.php";
                 if ($mysqli->query($sql)) {
                     echo '<p class="success">Solarni sistem je sacuvan!</p>';
                 } else {
-                    echo '<p class="fail">Solarni sistem NIJE sacuvan!</p>';
+                    echo '<p class="fail">Solarni sistem <b>NIJE</b> sacuvan!</p>';
                 }
             } else {
                 echo '<p class="fail">Nisu prosleđeni parametri!</p>';
@@ -159,9 +159,9 @@ include "database.php";
                     $sql = "UPDATE solarni_sistem SET naziv='$naziv', zvezda='$zvezda', otkriven='$otkriven' WHERE id=$id";
                     if ($mysqli->query($sql)) {
                         if ($mysqli->affected_rows > 0) {
-                            echo '<p class="success">Servis je izmenjen.</p>';
+                            echo '<p class="success">Solarni sistem je izmenjen.</p>';
                         } else {
-                            echo '<p class="fail">Servis NIJE izmenjen.</p>';
+                            echo '<p class="fail">Solarni sistem <b>NIJE</b> izmenjen.</p>';
                         }
                     } else {
                         echo '<p class="fail">Greska!</p>';
@@ -190,6 +190,19 @@ include "database.php";
                 </ul>
             </form>
 
+            <?php
+            if (isset($_POST["obrisi"])) {
+                if (isset($_POST['id'])) {
+                    $id = $_POST['id'];
+                    $upit = "DELETE FROM solarni_sistem WHERE id=$id";
+                    if ($mysqli->query($upit)) {
+                        echo '<p class="success">Solarni sistem je izbrisan!</p>';
+                    } else {
+                        echo '<p class="fail">Solarni sistem <b>NIJE</b> izbrisan!</p>';
+                    }
+                }
+            }
+            ?>
 
         </div>
     </section>
