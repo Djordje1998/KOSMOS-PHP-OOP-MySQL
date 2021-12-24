@@ -15,7 +15,8 @@ body {
 
 h3 {
     font-weight: 100;
-    font-size: 40px;
+    font-size: 50px;
+    margin: 30px;
 }
 
 button {
@@ -47,9 +48,14 @@ header {
 }
 
 header h1 {
-    margin-left: 3%;
     font-size: 75px;
     font-weight: normal;
+}
+
+.success {
+    font-size: 25px;
+    color: green;
+    font-weight: 100;
 }
 
 #showcase {
@@ -86,8 +92,11 @@ footer {
 table,
 th,
 td {
-    border: 2px solid white;
+    border: 2px solid #007200;
     padding: 2px;
+    font-size: 22px;
+    font-weight: 100;
+    color: #5e60ce;
 }
 
 table {
@@ -98,7 +107,9 @@ table {
 }
 
 table a {
-    color: white;
+    color: #72efdd;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 table a:visited {
