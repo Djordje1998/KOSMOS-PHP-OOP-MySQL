@@ -112,7 +112,7 @@ include "database.php";
                 if ($mysqli->query($sql)) {
                     echo '<p class="success">Solarni sistem je sacuvan!</p>';
                 } else {
-                    echo '<p class="success">Solarni sistem NIJE sacuvan!</p>';
+                    echo '<p class="fail">Solarni sistem NIJE sacuvan!</p>';
                 }
             } else {
                 echo '<p class="fail">Nisu prosleđeni parametri!</p>';
@@ -128,7 +128,7 @@ include "database.php";
                 <ul class="wrapper">
                     <li class="form-row">
                         <label>ID izmene:</label></br>
-                        <input type="text" name="idp" required>
+                        <input type="text" name="id" required>
                     </li>
                     <li class="form-row">
                         <label>Naziv:</label></br>
@@ -148,6 +148,29 @@ include "database.php";
                     </li>
                 </ul>
             </form>
+
+            <?php
+            if (isset($_POST["izmeni"])) {
+                if (isset($_POST['id']) && isset($_POST['naziv']) && isset($_POST['zvezda']) && isset($_POST['otkriven'])) {
+                    $id = $_POST['id'];
+                    $naziv = $_POST['naziv'];
+                    $zvezda = $_POST['zvezda'];
+                    $otkriven = $_POST['otkriven'];
+                    $sql = "UPDATE solarni_sistem SET naziv='$naziv', zvezda='$zvezda', otkriven='$otkriven' WHERE id=$id";
+                    if ($mysqli->query($sql)) {
+                        if ($mysqli->affected_rows > 0) {
+                            echo '<p class="success">Servis je izmenjen.</p>';
+                        } else {
+                            echo '<p class="fail">Servis NIJE izmenjen.</p>';
+                        }
+                    } else {
+                        echo '<p class="fail">Greska!</p>';
+                    }
+                } else {
+                    echo '<p class="fail">Nisu prosledjeni parametri!</p>';
+                }
+            }
+            ?>
 
         </div>
     </section>
