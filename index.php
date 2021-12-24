@@ -42,15 +42,37 @@ include "database.php";
     <section id="scp">
         <div class="container">
             <h3>Prikazi sve solarne sisteme</h3>
-            <button id="ss_prikaz">Prikazi</button>
-            <div class="ss_tabela" id="tabela_sistemi"></div>
+            <button id="scpb">Prikazi</button>
+            <div class="scp" id="tabela_sistemi"></div>
 
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $("#ss_prikaz").click(function() {
-                        $(".ss_tabela").load("getsolar.php");
+                    $("#scpb").click(function() {
+                        event.preventDefault();
+                        $(".scp").load("getsolar.php");
                     })
                 });
+            </script>
+
+            <script>
+                $(document).ready(function() {
+                    $(document).on('click', '.column_sort', function() {
+                        event.preventDefault();
+                        var column_name = $(this).attr("id");
+                        var order = $(this).data("order");
+                        $.ajax({
+                            url: "sortsolar.php",
+                            method: "POST",
+                            data: {
+                                column_name: column_name,
+                                order: order
+                            },
+                            success: function(data) {
+                                $('#tabela_sistemi').html(data);
+                            }
+                        })
+                    })
+                })
             </script>
 
         </div>
