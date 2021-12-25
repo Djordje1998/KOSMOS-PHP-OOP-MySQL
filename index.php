@@ -212,6 +212,13 @@ include "database.php";
             <button id="sapb">Prikazi</button>
             <div class="sap" id="tabela_planete"></div>
 
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#sapb").click(function() {
+                        $(".sap").load("getplanet.php");
+                    })
+                });
+            </script>
 
         </div>
     </section>
